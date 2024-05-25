@@ -1,4 +1,4 @@
-for the output see the vedio inside the repositry
+for the output see the video inside the repositry
 # AutoCorrect Application
 
 This project is an AutoCorrect application built using Python and Natural Language Processing (NLP). The application corrects the spelling of words entered by the user, utilizing a language model for suggestions and corrections.
