@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocorrecter ai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results div {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Autocorrecter ai</h1>
+        
+        <form action="/spell" method="POST" class="form-group">
+            <label for="text">Enter text:</label>
+            <textarea id="text" name="text" rows="4" placeholder="Type your text here...">{{ input_text }}</textarea>
+            <button type="submit">Check Text</button>
+        </form>
+
+        <form action="/grammar" method="POST" enctype="multipart/form-data" class="form-group">
+            <label for="file">Upload a file for spell and grammar check:</label>
+            <input type="file" id="file" name="file">
+            <button type="submit">Check File</button>
+        </form>
+
+        <div class="results">
+            {% if corrected_text %}
+                <div><strong>Corrected Text:</strong> {{ corrected_text }}</div>
+            {% endif %}
+            {% if corrected_grammar %}
+                <div><strong>Corrected Grammar:</strong> {{ corrected_grammar }}</div>
+            {% endif %}
+            {% if corrected_file_text %}
+                <div><strong>Corrected File Text:</strong> {{ corrected_file_text }}</div>
+            {% endif %}
+            {% if corrected_file_grammar %}
+                <div><strong>Corrected File Grammar:</strong> {{ corrected_file_grammar }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
